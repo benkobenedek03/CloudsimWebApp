@@ -1,0 +1,44 @@
+@if (loading) {
+    <div class="loading-screen">
+        <div class="spinner"></div>
+
+        <h2>Processing your request...</h2>
+    <p>Please wait.</p>
+  </div>
+} @else{
+    <form
+      (ngSubmit)="SendRequest()"
+      class="w-full max-w-2xl mx-auto my-10"
+    >
+      <div class="form-control">
+        <label class="label py-1">
+          <span class="label-text text-l font-bold my-5">
+            Detailed config
+          </span>
+        </label>
+
+        <textarea
+          name="detailedConfig"
+          [(ngModel)]="configString"
+          placeholder="Enter detailed configuration..."
+          class="textarea textarea-bordered w-full h-96 resize-y"
+          spellcheck="false"
+        ></textarea>
+      </div>
+
+      <div class="flex justify-center mt-5">
+        <button
+          type="submit"
+          class="btn bg-linear-to-r from-blue-500 to-purple-500 btn-primary btn-sm w-full my-5"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+}
+@if(alertPopupVisible()){
+  <app-alertpopup [message]="popupMessage" (closeEvent)="closePopups()"></app-alertpopup>
+}
+@if (successPopupVisible()) {
+  <app-successpopup [message]="popupMessage" (closeEvent)="closePopups()"></app-successpopup>
+}

@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Frontend - Angular",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "frontend: start",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "Backend - Spring Boot",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "com.cloudsimgui.backend.BackendApplication",
+      "projectName": "backend",
+      "cwd": "${workspaceFolder}\\CloudsimGUI\\backend",
+      "env": {
+        "JAVA_HOME": "C:\\Program Files\\Java\\jdk-26.0.2.1"
+      }
+    },
+    {
+      "name": "CloudSim Web - Docker Compose",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "docker compose: up",
+      "postDebugTask": "docker compose: down",
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}\\CloudSimGUIFrontend"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "CloudSim Web - Docker Compose (F5)",
+      "configurations": [
+        "CloudSim Web - Docker Compose"
+      ],
+      "stopAll": true
+    }
+  ]
+}
